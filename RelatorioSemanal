@@ -1,0 +1,259 @@
+\documentclass[
+	% -- opções da classe memoir --
+	12pt,				% tamanho da fonte
+	a4paper,			% tamanho do papel. 
+    oneside,
+	% -- opções da classe abntex2 --
+	%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	french,				% idioma adicional para hifenização
+	spanish,			% idioma adicional para hifenização
+	brazil,				% o último idioma é o principal do documento
+	]{abntex2}
+
+
+% ---
+% PACOTES
+% ---
+
+% ---
+% Pacotes fundamentais 
+% ---
+\usepackage{lmodern}			% Usa a fonte Latin Modern
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+% ---
+
+% ---
+% Pacotes adicionais, usados no anexo do modelo de folha de identificação
+% ---
+\usepackage{multicol}
+\usepackage{multirow}
+% ---
+	
+% ---
+% Pacotes adicionais, usados apenas no âmbito do Modelo Canônico do abnteX2
+% ---
+\usepackage{lipsum}				% para geração de dummy text
+% ---
+
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+
+% --- 
+% CONFIGURAÇÕES DE PACOTES
+% --- 
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{Relatório Final}
+\autor{Gustavo dos Santos Leão}
+\local{Montes Claros - MG}
+\data{\today}
+\instituicao{%
+  Instituto Federeal do Norte de Minas Gerais IFNMG
+  \par
+  Campus Montes Claros
+  \par
+  Bacharelado em Ciências da Computação
+  }
+\tipotrabalho{Relatório técnico}
+% O preambulo deve conter o tipo do trabalho, o objetivo, 
+% o nome da instituição e a área de concentração 
+\preambulo{Relatório apresentado ao Professor Marcos Aurélio Duarte Carvalho como parte das exigências de avaliação da disciplina de Física Clássica do Curso de Bacharelado em Ciência da Computação do Instituto Federal do Norte de Minas Gerais, Campus Montes Claros.}
+% ---
+
+% ---
+% Configurações de aparência do PDF final
+
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	%pdfsubject={\imprimirpreambulo},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{relatório técnico}, 
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+% --- 
+
+% --- 
+% Espaçamentos entre linhas e parágrafos 
+% --- 
+
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.3cm}
+
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+
+% Seleciona o idioma do documento (conforme pacotes do babel)
+%\selectlanguage{english}
+\selectlanguage{brazil}
+
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing 
+
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+% \pretextual
+
+% ---
+% Capa
+% ---
+\imprimircapa
+% ---
+
+% ---
+% Folha de rosto
+% (o * indica que haverá a ficha bibliográfica)
+% ---
+\imprimirfolhaderosto
+% ---
+
+% ---
+% Anverso da folha de rosto:
+% ---
+
+
+
+% ---
+% Agradecimentos
+% ---
+\begin{agradecimentos}
+Agradeço primeiramente à minha família por todo apoio e suporte que vem sendo dado durante essa jornada acadêmica. Sua constante compreensão, incentivo e presença têm sido fundamentais para o meu progresso e bem-estar ao longo deste período.
+
+Expresso também minha gratidão aos meus amigos, cuja amizade e colaboração enriqueceram minha experiência acadêmica. Suas trocas de ideias, apoio mútuo e camaradagem tornaram os desafios mais leves e as vitórias mais significativas.
+
+Aos meus professores, meu sincero agradecimento pelo acompanhamento dedicado e pela orientação valiosa durante a apresentação de trabalhos e entrega de projetos. Seu conhecimento compartilhado, paciência e incentivo foram cruciais para o meu desenvolvimento acadêmico.
+
+Cada uma dessas fontes de apoio desempenhou um papel vital em minha jornada educacional, e por isso, expresso minha profunda gratidão a todos que contribuíram para o meu crescimento e aprendizado.
+
+\end{agradecimentos}
+
+% ---
+% RESUMO
+% ---
+
+% resumo na língua vernácula (obrigatório)
+\setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
+\begin{resumo}
+ O relatório oferece uma visão abrangente e reflexiva sobre a intensidade e complexidade enfrentadas durante essa semana de provas e trabalhos acadêmicos. Demonstrando os diversos desafios passados para a entrega e conclusão de trabalhos, além de estudos para as provas durante esse período crucial do semestre.
+
+ \noindent
+ \textbf{Palavras-chaves}: estudos. provas.
+\end{resumo}
+% ---
+% inserir lista de ilustrações
+% ---
+\pdfbookmark[0]{\listfigurename}{lof}
+\listoffigures*
+\cleardoublepage
+% ---
+
+% ---
+% inserir o sumario
+% ---
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+% ---
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+
+% ----------------------------------------------------------
+% Introdução (exemplo de capítulo sem numeração, mas presente no Sumário)
+% ----------------------------------------------------------
+\chapter*[Introdução]{Introdução}
+\addcontentsline{toc}{chapter}{Introdução}
+
+A última semana de provas representa um período crucial no ciclo acadêmico, exigindo uma preparação intensiva para enfrentar os desafios apresentados pelas avaliações finais. Este relatório destaca minhas atividades, estratégias e reflexões durante essa semana, com o objetivo de oferecer uma visão abrangente sobre a abordagem adotada para otimizar o desempenho acadêmico e manter um equilíbrio saudável entre a dedicação aos estudos e o bem-estar pessoal.
+
+Esse relatório aborda sobre as minhas principais atividades durante essa semana intensiva, destacando estratégias específicas adotadas para otimizar a preparação, bem como a gestão do tempo e a colaboração com colegas.
+
+\chapter{Desenvolvimento}\label
+No decorrer desta semana, empenhei-me na continuidade do desenvolvimento de dois projetos finais, os quais desempenham um papel crucial em disciplinas distintas. O primeiro projeto envolve a criação de um protótipo de sistema, uma tarefa significativa vinculada à disciplina de Sistemas de Informação. Enquanto o segundo projeto estava direcionado à criação de um processador, um desafio estimulante atrelado à disciplina de Arquitetura de Computadores. Este projeto demanda uma compreensão aprofundada dos princípios de arquitetura dos processadores, exigindo a aplicação prática de conhecimentos teóricos adquiridos ao longo do semestre.
+
+ Além dos trabalhos citados, não poderíamos desconsiderar a importância do comprometimento com os estudos direcionados para as avaliações previstas. Reconhecendo a relevância de obter um desempenho satisfatórios nas avaliações, dediquei parte significativa do meu tempo à revisão aprofundada dos conteúdos e resolução de exercícios práticos. No meio da semana, foi desenvolvidos outros trabalhos, sendo um deles envolvendo a elaboração de um relatório detalhado sobre um experimento conduzido durante uma das aulas de Física Clássica. Esse relatório teve como objetivo documentar e analisar os resultados do experimento, proporcionando uma compreensão mais profunda dos princípios físicos, e o outro uma apresentação sobre regressão linear para a disciplina de Probabilidade e Estatística.
+  \begin{figure}[htb]
+	\caption{\label{fig_grafico}Produção dos Slides para apresentação}
+	\begin{center}
+	    \includegraphics[scale=0.5]{image.png}
+	\end{center}
+	\legend{Fonte: Tela do Canva}
+\end{figure}
+
+ Ao nos aproximarmos do desfecho desta intensa semana acadêmica, uma etapa fundamental que demandou atenção e dedicação foi a conclusão dos trabalhos referentes à disciplina de Metodologia Científica.
+
+\chapter{Resultados}
+ Ao longo da semana, destaquei-me no desenvolvimento dos trabalhos relacionados às disciplinas de Sistema de Informações e Arquitetura de Computadores. Embora o esforço tenha sido iniciado desde os primeiros dias, a conclusão efetiva desses projetos foi alcançada mais intensivamente no decorrer do fim de semana. A efetiva finalização do processador pode ser visualizada na Figura 1, apresentada a seguir, evidenciando o resultado concreto e funcional do esforço dedicado.
+
+\begin{figure}[htb]
+	\caption{\label{fig_grafico}Imagem de um Processador Básico}
+	\begin{center}
+	    \includegraphics[scale=0.5]{circuito.png}
+	\end{center}
+	\legend{Fonte: Software Logisim}
+\end{figure}
+
+O projeto referente à disciplina de Sistemas de Informações foi concluído de maneira pontual, atendendo ao prazo estipulado. O protótipo do sistema, embora simples em sua concepção, foi submetido à avaliação da professora responsável pela disciplina. 
+A elaboração do relatório referente ao experimento de física representou uma jornada desafiadora, exigindo esforço e dedicação para compilar de maneira precisa os dados obtidos e as análises realizadas. Apesar da complexidade e do esforço empregado, o relatório foi entregue pontualmente, atendendo rigorosamente ao prazo estipulado. O processo de coleta de dados, especialmente através do software Tracker, permitiu a obtenção de valores que atenderam os resultados esperados.
+
+\chapter{Conclusão}
+    Apesar da intensidade da semana, marcada por várias entregas e avaliações, destaco a realização bem-sucedida do planejamento estabelecido. Seguindo o cronograma com disciplina, consegui entregar todos os trabalhos dentro dos prazos estipulados e dedicar tempo ao estudo para as avaliações iminentes. Este feito destaca a eficácia na gestão do tempo e a capacidade de manter um equilíbrio entre diferentes demandas acadêmicas, contribuindo para uma experiência de aprendizado mais eficiente e bem-sucedida.
+\end{document}
